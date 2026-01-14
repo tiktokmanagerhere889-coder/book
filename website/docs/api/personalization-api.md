@@ -32,7 +32,7 @@ Authorization: Bearer {{jwt_token}}
 
 ## Available Endpoints
 
-### GET /modules/{{moduleId}}
+### GET `/modules/{moduleId}`
 
 Retrieve information about a specific educational module.
 
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-### GET /users/{{userId}}/progress/{{moduleId}}
+### GET `/users/{userId}/progress/{moduleId}`
 
 Retrieve a user's progress in a module.
 
@@ -100,7 +100,7 @@ Content-Type: application/json
 }
 ```
 
-### PUT /users/{{userId}}/progress/{{moduleId}}/chapters/{{chapterId}}
+### PUT `/users/{userId}/progress/{moduleId}/chapters/{chapterId}`
 
 Update a user's progress in a chapter.
 
