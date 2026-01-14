@@ -208,3 +208,12 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- JavaScript/TypeScript (Node.js 18+), Markdown + Docusaurus 3.x, React, Node.js (001-ros2-humanoid-control)
+- Static files hosted on GitHub Pages (001-ros2-humanoid-control)
+- Markdown (.md), JavaScript/TypeScript for Docusaurus + Docusaurus 3.x, Node.js, React (001-isaac-ai-brain)
+- Static files stored in docs/modules/isaac-ai-brain directory (001-isaac-ai-brain)
+
+## Recent Changes
+- 001-ros2-humanoid-control: Added JavaScript/TypeScript (Node.js 18+), Markdown + Docusaurus 3.x, React, Node.js

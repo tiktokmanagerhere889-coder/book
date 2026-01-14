@@ -1,55 +1,70 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT:
+Version change: N/A -> 1.0.0
+Modified principles: N/A
+Added sections: All principles and sections based on AI-Native Interactive Book project
+Removed sections: Template placeholders
+Templates requiring updates: N/A (initial constitution)
+Follow-up TODOs: None
+-->
+# AI-Native Interactive Book with Embedded RAG Intelligence Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-Driven Development
+All development follows a structured specification-first approach; Features and changes must be documented in specs before implementation; Clear requirements and acceptance criteria are mandatory before development begins.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Accuracy and Content Grounding
+All book content must be technically accurate and verifiable; RAG chatbot responses must be strictly grounded in book content; No hallucinations or fabricated information allowed in any AI-generated content.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Reusable AI Intelligence
+Subagents for authoring, validation, RAG, and translation must be isolated and reusable; Agent Skills must be documented and maintainable; Intelligence components should be modular and independently deployable.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Personalization-First Design
+User experience must prioritize personalization capabilities; Authentication and user profiles enable tailored content delivery; Personalization features are core functionality, not afterthoughts.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Production-Grade Architecture
+All systems must meet production readiness standards; Proper error handling, monitoring, and observability required; Security, performance, and reliability are foundational requirements.
 
-### [PRINCIPLE_6_NAME]
+### VI. Modular Book Structure
+Content must follow modular, chapter-based organization; Docusaurus framework provides consistent presentation layer; Technical accuracy verification processes are built into the authoring workflow.
 
+## Additional Standards
 
-[PRINCIPLE__DESCRIPTION]
+### Book Authoring and RAG Implementation
+- Written with Docusaurus using Spec-Kit Plus methodology
+- Authored and refactored by Claude Code with technical accuracy verification
+- RAG chatbot stack: OpenAI Agents/ChatKit, FastAPI, Neon Postgres, Qdrant Cloud
+- Safe failure mechanisms when context is insufficient
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Localization and Personalization
+- Support for multilingual content with English as canonical source
+- Logged-in users can translate chapters to Urdu with proper localization
+- Personalization features available for authenticated users
+- User signup collects software and hardware background for personalization
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Technology Stack Constraints
+- Deployment: GitHub Pages
+- Frontend: Docusaurus
+- Backend: FastAPI
+- Vector DB: Qdrant Cloud (Free Tier)
+- Auth: Better-Auth for signup/signin functionality
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Implementation Standards
+- All features must follow spec-driven development lifecycle (spec → plan → tasks → implementation)
+- Reusable agents and skills must be properly isolated and documented
+- Personalization and translation features must be functional before release
+- Claude Code must be used for all development tasks
+
+### Quality Requirements
+- Book must be published and accessible via GitHub Pages
+- RAG chatbot must provide accurate answers from book content
+- Personalization and Urdu translation must function correctly
+- All components must be implemented via Spec-Kit Plus methodology
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution governs all development activities for the AI-Native Interactive Book project. All implementation must align with these principles and standards. Changes to this constitution require explicit approval and documentation of the rationale. All team members must adhere to spec-driven development practices and the technology stack constraints outlined herein.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-13 | **Last Amended**: 2026-01-13

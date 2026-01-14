@@ -1,0 +1,253 @@
+# API Contract: Simulation Educational Content Service
+
+**Date**: 2026-01-13
+**Version**: 1.0.0
+**Service**: Digital Twin Simulation Educational Module
+
+## Overview
+
+This contract defines the API endpoints for delivering educational content about digital twin simulation concepts using Gazebo and Unity. The API supports static content delivery with future extensibility for personalized learning experiences.
+
+## Base URL
+
+```
+https://api.digital-twin-simulation.example.com/v1
+```
+
+## Authentication
+
+Most endpoints are public. Personalization features require authentication via JWT token.
+
+## Endpoints
+
+### GET /modules/{moduleId}
+
+Retrieve information about a specific educational module.
+
+**Request:**
+```
+GET /v1/modules/digital-twin-simulation
+Headers:
+  Accept: application/json
+```
+
+**Response:**
+```
+Status: 200 OK
+Content-Type: application/json
+
+{
+  "id": "digital-twin-simulation",
+  "title": "Digital Twin Simulation: Gazebo & Unity",
+  "description": "Teaching digital twin simulation concepts using Gazebo and Unity for AI/software engineers",
+  "target_audience": "AI/software engineers learning robot simulation and digital environments",
+  "difficulty_level": "intermediate",
+  "estimated_duration_minutes": 270,
+  "chapters_count": 3,
+  "learning_objectives": [
+    "Simulate robots in Gazebo and Unity",
+    "Understand sensor simulation and environment modeling",
+    "Apply digital twin concepts"
+  ],
+  "created_at": "2026-01-13T00:00:00Z",
+  "updated_at": "2026-01-13T00:00:00Z"
+}
+```
+
+### GET /modules/{moduleId}/chapters
+
+Retrieve the list of chapters in a module.
+
+**Request:**
+```
+GET /v1/modules/digital-twin-simulation/chapters
+Headers:
+  Accept: application/json
+```
+
+**Response:**
+```
+Status: 200 OK
+Content-Type: application/json
+
+{
+  "module_id": "digital-twin-simulation",
+  "chapters": [
+    {
+      "id": "chapter-1-gazebo-physics-simulation",
+      "title": "Physics Simulation in Gazebo",
+      "position": 1,
+      "estimated_duration_minutes": 90,
+      "learning_objectives": [
+        "Set up Gazebo environment with gravity and collisions",
+        "Configure sensor simulation (LiDAR, Depth Cameras, IMUs)",
+        "Implement robot-environment interactions"
+      ]
+    },
+    {
+      "id": "chapter-2-unity-interaction-visualization",
+      "title": "Unity for High-Fidelity Interaction",
+      "position": 2,
+      "estimated_duration_minutes": 90,
+      "learning_objectives": [
+        "Render humanoid robots in Unity",
+        "Visualize human-robot interaction",
+        "Link simulation data with Unity scenes"
+      ]
+    },
+    {
+      "id": "chapter-3-digital-twin-concepts",
+      "title": "Digital Twin Concepts",
+      "position": 3,
+      "estimated_duration_minutes": 90,
+      "learning_objectives": [
+        "Create digital representation of physical robots",
+        "Synchronize simulation with real-world robot behavior",
+        "Use simulation for planning and testing"
+      ]
+    }
+  ]
+}
+```
+
+### GET /modules/{moduleId}/chapters/{chapterId}
+
+Retrieve the content of a specific chapter.
+
+**Request:**
+```
+GET /v1/modules/digital-twin-simulation/chapters/chapter-1-gazebo-physics-simulation
+Headers:
+  Accept: application/json
+```
+
+**Response:**
+```
+Status: 200 OK
+Content-Type: application/json
+
+{
+  "id": "chapter-1-gazebo-physics-simulation",
+  "module_id": "digital-twin-simulation",
+  "title": "Physics Simulation in Gazebo",
+  "position": 1,
+  "content_format": "markdown",
+  "content": "# Chapter 1: Physics Simulation in Gazebo...",
+  "learning_objectives": [
+    "Set up Gazebo environment with gravity and collisions",
+    "Configure sensor simulation (LiDAR, Depth Cameras, IMUs)",
+    "Implement robot-environment interactions"
+  ],
+  "estimated_duration_minutes": 90,
+  "related_resources": [
+    {
+      "title": "Gazebo Official Documentation",
+      "url": "http://gazebosim.org/",
+      "type": "external"
+    },
+    {
+      "title": "Robotics Simulation Best Practices",
+      "url": "https://example.com/robotics-simulation-best-practices",
+      "type": "internal"
+    }
+  ],
+  "created_at": "2026-01-13T00:00:00Z",
+  "updated_at": "2026-01-13T00:00:00Z"
+}
+```
+
+### GET /users/{userId}/progress/{moduleId}
+
+Retrieve a user's progress in a module (requires authentication).
+
+**Request:**
+```
+GET /v1/users/abc123/progress/digital-twin-simulation
+Headers:
+  Accept: application/json
+  Authorization: Bearer {jwt_token}
+```
+
+**Response:**
+```
+Status: 200 OK
+Content-Type: application/json
+
+{
+  "user_id": "abc123",
+  "module_id": "digital-twin-simulation",
+  "completed_chapters": ["chapter-1-gazebo-physics-simulation"],
+  "current_chapter": "chapter-2-unity-interaction-visualization",
+  "completion_percentage": 33.33,
+  "time_spent_seconds": 2400,
+  "last_accessed": "2026-01-13T10:30:00Z",
+  "personalization_profile": {
+    "background": "software_engineering",
+    "interests": ["simulation", "gazebo", "unity"],
+    "learning_pace": "moderate"
+  }
+}
+```
+
+### PUT /users/{userId}/progress/{moduleId}/chapters/{chapterId}
+
+Update a user's progress in a chapter (requires authentication).
+
+**Request:**
+```
+PUT /v1/users/abc123/progress/digital-twin-simulation/chapters/chapter-1-gazebo-physics-simulation
+Headers:
+  Accept: application/json
+  Authorization: Bearer {jwt_token}
+  Content-Type: application/json
+
+{
+  "status": "completed",
+  "time_spent_seconds": 1800,
+  "notes": "Had difficulty understanding collision detection initially"
+}
+```
+
+**Response:**
+```
+Status: 200 OK
+Content-Type: application/json
+
+{
+  "user_id": "abc123",
+  "module_id": "digital-twin-simulation",
+  "chapter_id": "chapter-1-gazebo-physics-simulation",
+  "status": "completed",
+  "time_spent_seconds": 1800,
+  "updated_at": "2026-01-13T10:35:00Z",
+  "completion_percentage": 33.33
+}
+```
+
+## Error Responses
+
+All endpoints follow the same error response format:
+
+```
+Status: 4xx/5xx
+Content-Type: application/json
+
+{
+  "error": {
+    "code": "RESOURCE_NOT_FOUND",
+    "message": "The requested resource was not found",
+    "details": "Module with id 'nonexistent-module' does not exist"
+  }
+}
+```
+
+## Future Extensibility
+
+This API contract is designed to support:
+- Content personalization based on user profiles
+- Progress tracking and analytics
+- Integration with AI-based recommendation systems
+- Localization for multiple languages
+- Offline content synchronization
+- Simulation environment integration
+- Unity/Gazebo asset delivery
